@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TitleController : SimpleViewController
 {
-    private const float splashTimeout = 5.0f;
+    private const float splashTimeout = 1.0f;
 
     void Start()
     {

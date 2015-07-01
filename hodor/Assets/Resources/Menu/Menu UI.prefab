@@ -130,6 +130,8 @@ GameObject:
   - 223: {fileID: 22341200}
   - 114: {fileID: 11477106}
   - 114: {fileID: 11475390}
+  - 114: {fileID: 11461358}
+  - 114: {fileID: 11485834}
   m_Layer: 0
   m_Name: Menu UI
   m_TagString: Untagged
@@ -389,6 +391,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11461358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9701c0d37a04817aa54875334e5d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartGameButton: {fileID: 11489764}
 --- !u!114 &11475390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -416,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -473,6 +487,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11485834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40861c895dcc14d67bc37dde98daab2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ViewPresenter: {fileID: 0}
 --- !u!114 &11489764
 MonoBehaviour:
   m_ObjectHideFlags: 1
