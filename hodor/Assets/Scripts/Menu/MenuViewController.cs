@@ -5,12 +5,11 @@ public class MenuViewController : ViewController<MenuViewPresenter>
 {
     void Start()
     {
-        // TODO Wait for UI animation to finish (set up show/hide system)
-        ViewPresenter.StartGameButton.onClick.AddListener(() => Application.LoadLevel("Field"));
+        ViewPresenter.StartGameButton.onClick.AddListener(OnStartGame);
     }
 
-    void Disable()
+    void OnStartGame()
     {
-
+        ViewPresenter.Hide( () => Application.LoadLevel("Field") );
     }
 }

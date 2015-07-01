@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22415604}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ GameObject:
   - 222: {fileID: 22299358}
   - 114: {fileID: 11439486}
   - 114: {fileID: 11421802}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Btn_Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - 224: {fileID: 22472502}
   - 222: {fileID: 22258004}
   - 114: {fileID: 11423210}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Lbl_Help
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - 224: {fileID: 22472672}
   - 222: {fileID: 22234566}
   - 114: {fileID: 11479646}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Lbl_StartGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - 224: {fileID: 22481094}
   - 222: {fileID: 22271324}
   - 114: {fileID: 11405776}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Lbl_StartGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - 224: {fileID: 22412516}
   - 222: {fileID: 22293740}
   - 114: {fileID: 11432550}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Lbl_Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - 222: {fileID: 22290396}
   - 114: {fileID: 11425324}
   - 114: {fileID: 11489764}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Btn_StartGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,8 @@ GameObject:
   - 114: {fileID: 11475390}
   - 114: {fileID: 11461358}
   - 114: {fileID: 11485834}
-  m_Layer: 0
+  - 95: {fileID: 9538792}
+  m_Layer: 5
   m_Name: Menu UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +151,7 @@ GameObject:
   - 222: {fileID: 22265142}
   - 114: {fileID: 11483848}
   - 114: {fileID: 11412766}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Btn_Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +166,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22428192}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,13 +183,30 @@ GameObject:
   - 224: {fileID: 22451876}
   - 222: {fileID: 22287098}
   - 114: {fileID: 11490758}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Lbl_StartGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &9538792
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164716}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 8ea8665a4f33445b99261a016bdaa00c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11405776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -402,6 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9701c0d37a04817aa54875334e5d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoShow: 1
   StartGameButton: {fileID: 11489764}
 --- !u!114 &11475390
 MonoBehaviour:
@@ -834,7 +853,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 164716}
