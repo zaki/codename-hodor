@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CanvasScaler))]
 public class FieldController : SimpleViewController
@@ -23,6 +24,7 @@ public class FieldController : SimpleViewController
     // Setting the root object directly as it is not really a UI element
     public GameObject TileRoot;
     public GameObject TilePrefab;
+    public GameObject MarkerPrefab;
 
     private Vector2 FieldSize;
     private int fieldWidth;
@@ -52,5 +54,16 @@ public class FieldController : SimpleViewController
                 tileController.Setup();
             }
         }
+    }
+
+    public void OnClick(BaseEventData pointer)
+    {
+        GameObject marker = GameObject.Instantiate(MarkerPrefab);
+        marker.transform.SetParent(gameObject.transform, false);
+
+        Vector2 position = (pointer as PointerEventData).position;
+        marker.transform.position = new Vector3(position.x, position.y, 0);
+        marker.transform.localScale = Vector3.one;
+
     }
 }
