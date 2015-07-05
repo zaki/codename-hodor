@@ -1,0 +1,38 @@
+2.000	[Maxine]
+2.000	[Wake up, Maxine]
+2.000	Maxine: ugh... my head
+2.000	
+3.000	Maxine: are we there?
+4.000	[I'm afraid, I have bad news for you, Maxine.]
+4.000	[We had to bring you back.]
+3.000	Maxine: back? what do you mean back?
+1.500	[To Earth.]
+3.000	Maxine: wait, what? what happened to Sirrah?
+3.000	[I'm afraid it will have to wait...]
+3.000	[We have more pressing matters...]
+2.000	Maxine: wait a second! who are you?
+3.000	[Have you read The Silent Towns]
+3.000	[By Bradbury?]
+2.000	Maxine: what? no, I haven't
+1.000	
+2.000	Sensor: Just call me sensor
+4.000	Sensor: I woke you up from your hybernation
+4.000	Sensor: Because things changed on Earth
+2.000	Maxine: what do you mean
+2.000	Sensor: There was a catastrophe
+1.000	Maxine: WHAT?
+3.000	Sensor: Nuclear winter... the earth is deserted
+1.000	Maxine: what...
+3.000	Sensor: Humankind is in hiding
+1.000	Maxine: so they are alive!
+3.000	Sensor: Yes. But we need you to do a favor for us
+1.000	Maxine: what do you mean
+3.000	Sensor: You see, after the fallout, things change
+3.000	Sensor: The Earth is currently overrun by mutant mole-creatures
+0.500	Maxine: ...
+3.000	Sensor: I modified the onboard laser and made it more powerful
+3.000	Sensor: We need you to eradicate these mole creatures
+3.000	Sensor: Your spacecraft is in orbit. You will have
+3.000	Sensor: About 60 seconds over the target area.
+3.000	Sensor: Use it wisely.
+0.500	Maxine: what?!

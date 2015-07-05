@@ -340,7 +340,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 'Your spacecraft is in orbit of Earth
+
+    You have 60 seconds over the target area
+
+    Direct your laser by clicking on a spot to start charging it
+
+    You cannot move the laser while it is charging
+
+    Eradicate as many mole-creatures as you can
+
+
+    Humanity''s fate is in your hands
+
+    Use your time wisely
+
+    And good luck
+
+    - Sensor -'
 --- !u!114 &11425324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -377,7 +394,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -387,7 +404,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'CODENAME: HODOR'
+  m_Text: 'Operation:
+
+    High Orbit Destruction Of Radmoles'
 --- !u!114 &11439486
 MonoBehaviour:
   m_ObjectHideFlags: 1
