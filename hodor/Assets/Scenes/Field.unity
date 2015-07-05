@@ -144,6 +144,8 @@ MonoBehaviour:
   TileRoot: {fileID: 807699213}
   TilePrefab: {fileID: 190866, guid: 2f6990649e1b94304affc57df297c8a6, type: 2}
   MarkerPrefab: {fileID: 197226, guid: b8f82890a427b405081385636f089362, type: 2}
+  MolePrefab: {fileID: 156260, guid: 76865002f98ac49d1b89683c412abe82, type: 2}
+  SpawnInterval: .5
 --- !u!114 &765983381
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 [RequireComponent(typeof(CanvasScaler))]
 public class FieldController : SimpleViewController
@@ -25,10 +26,12 @@ public class FieldController : SimpleViewController
     public GameObject TileRoot;
     public GameObject TilePrefab;
     public GameObject MarkerPrefab;
+    public GameObject MolePrefab;
+
+    public float SpawnInterval = 1.5f;
 
     private Vector2 FieldSize;
-    private int fieldWidth;
-    private int fieldHeight;
+    private bool markerActive = false;
 
     void Awake()
     {
@@ -54,16 +57,50 @@ public class FieldController : SimpleViewController
                 tileController.Setup();
             }
         }
+
+        StartCoroutine(SpawnMoles());
     }
 
     public void OnClick(BaseEventData pointer)
     {
+        if (markerActive) return;
+
         GameObject marker = GameObject.Instantiate(MarkerPrefab);
         marker.transform.SetParent(gameObject.transform, false);
+        marker.GetComponent<MarkerController>().SetController(this);
 
         Vector2 position = (pointer as PointerEventData).position;
         marker.transform.position = new Vector3(position.x, position.y, 0);
         marker.transform.localScale = Vector3.one;
+        markerActive = true;
+    }
 
+    public void DeactivateMarker()
+    {
+        // TODO Change this into a UnityEvent
+        markerActive = false;
+    }
+
+    private IEnumerator SpawnMoles()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(SpawnInterval);
+            SpawnMole();
+        }
+    }
+
+    private void SpawnMole()
+    {
+        GameObject mole = GameObject.Instantiate(MolePrefab);
+        mole.transform.SetParent(gameObject.transform, false);
+
+        Vector2 position;
+        position.x = Random.Range(0, 2 * FieldSize.x * FieldConstants.TileWidth);
+        position.y = Random.Range(0, 2 * FieldSize.y * FieldConstants.TileHeight);
+        mole.transform.position = new Vector3(position.x, position.y, 0);
+        mole.transform.localScale = Vector3.one;
+        float rotation = Random.Range(-180f, 180f);
+        mole.transform.rotation = Quaternion.AngleAxis(rotation, new Vector3(0, 0, 1));
     }
 }
