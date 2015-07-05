@@ -441,6 +441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoShow: 1
   StartGameButton: {fileID: 11489764}
+  ExitGameButton: {fileID: 11412766}
 --- !u!114 &11475390
 MonoBehaviour:
   m_ObjectHideFlags: 1
