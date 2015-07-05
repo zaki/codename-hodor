@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.Collections;
 
@@ -22,21 +23,40 @@ public class FieldController : SimpleViewController
         }
     }
 
+    public static UnityEvent DestroyedMole = new UnityEvent();
+    public static UnityEvent GameOver = new UnityEvent();
+
     // Setting the root object directly as it is not really a UI element
     public GameObject TileRoot;
     public GameObject TilePrefab;
     public GameObject MarkerPrefab;
     public GameObject MolePrefab;
 
+    public FieldUIController FieldUIController;
     public float SpawnInterval = 1.5f;
 
     private Vector2 FieldSize;
     private bool markerActive = false;
 
+    private int score = 0;
+
     void Awake()
     {
         Vector2 referenceResolution = gameObject.GetComponent<CanvasScaler>().referenceResolution;
         FieldSize = FieldConstants.FieldSize(referenceResolution);
+
+    }
+
+    void OnEnable()
+    {
+        FieldController.DestroyedMole.AddListener(() => { score++; this.FieldUIController.Score = score; });
+        FieldController.GameOver.AddListener(() => { Application.LoadLevel("Menu"); });
+    }
+
+    void OnDisable()
+    {
+        FieldController.DestroyedMole.RemoveAllListeners();
+        FieldController.GameOver.RemoveAllListeners();
     }
 
     void Start()

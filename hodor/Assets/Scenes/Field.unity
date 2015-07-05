@@ -145,6 +145,7 @@ MonoBehaviour:
   TilePrefab: {fileID: 190866, guid: 2f6990649e1b94304affc57df297c8a6, type: 2}
   MarkerPrefab: {fileID: 197226, guid: b8f82890a427b405081385636f089362, type: 2}
   MolePrefab: {fileID: 156260, guid: 76865002f98ac49d1b89683c412abe82, type: 2}
+  FieldUIController: {fileID: 1602072059}
   SpawnInterval: .5
 --- !u!114 &765983381
 MonoBehaviour:
@@ -459,6 +460,12 @@ Transform:
   - {fileID: 290445303}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &1602072059 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11452460, guid: c6f629f17a8c34b8498510710cede6c4,
+    type: 2}
+  m_PrefabInternal: {fileID: 776796498}
+  m_Script: {fileID: 11500000, guid: c552c704067e94defbf422368c37fe40, type: 3}
 --- !u!1 &1795366672
 GameObject:
   m_ObjectHideFlags: 0

@@ -74,6 +74,8 @@ public class RadmoleController : SimpleViewController
 
     IEnumerator DoDie()
     {
+        FieldController.DestroyedMole.Invoke();
+
         while (MoleAnimator.IsInTransition(0) || MoleAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
         {
             yield return null;
