@@ -8,6 +8,8 @@ public class MarkerController : SimpleViewController
     public float ExplosionDelay = 1.2f;
     public CircleCollider2D Collider;
 
+    public AudioSource LaserSound;
+
     private FieldController fieldController = null;
 
     void OnEnable()
@@ -18,6 +20,8 @@ public class MarkerController : SimpleViewController
     IEnumerator WaitForExplosion()
     {
         yield return new WaitForSeconds(ExplosionDelay);
+
+        LaserSound.Play();
 
         Collider.enabled = true;
 
