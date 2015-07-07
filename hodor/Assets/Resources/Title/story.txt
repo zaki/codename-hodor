@@ -27,7 +27,7 @@
 1.000	Maxine: so they are alive!
 3.000	Sensor: Yes. But we need you to do a favor for us
 1.000	Maxine: what do you mean
-3.000	Sensor: You see, after the fallout, things change
+3.000	Sensor: You see, after the fallout, things have changed
 3.000	Sensor: The Earth is currently overrun by mutant mole-creatures
 0.500	Maxine: ...
 3.000	Sensor: I modified the onboard laser and made it more powerful
