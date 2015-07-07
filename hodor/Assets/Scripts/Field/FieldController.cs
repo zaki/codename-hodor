@@ -11,7 +11,6 @@ public class FieldController : SimpleViewController
     {
         public static int TileWidth  = 32;
         public static int TileHeight = 32;
-
         public static int FieldMargin = 1;
 
         public static Vector2 FieldSize(Vector2 referenceResolution)
@@ -28,15 +27,16 @@ public class FieldController : SimpleViewController
 
     // Setting the root object directly as it is not really a UI element
     public GameObject TileRoot;
+    public GameObject MoleRoot;
     public GameObject TilePrefab;
     public GameObject MarkerPrefab;
     public GameObject MolePrefab;
 
-    public FieldUIController FieldUIController;
     public float SpawnInterval = 1.5f;
 
     private Vector2 FieldSize;
     private bool markerActive = false;
+    private FieldUIController fieldUIController;
 
     private int score = 0;
 
@@ -44,13 +44,12 @@ public class FieldController : SimpleViewController
     {
         Vector2 referenceResolution = gameObject.GetComponent<CanvasScaler>().referenceResolution;
         FieldSize = FieldConstants.FieldSize(referenceResolution);
-
     }
 
     void OnEnable()
     {
-        FieldController.DestroyedMole.AddListener(() => { score++; this.FieldUIController.Score = score; });
-        FieldController.GameOver.AddListener(() => { Application.LoadLevel("Menu"); });
+        FieldController.DestroyedMole.AddListener(() => { score++; fieldUIController.Score = score; });
+        FieldController.GameOver.AddListener(() => { fieldUIController.GameOver(score); });
     }
 
     void OnDisable()
@@ -61,6 +60,8 @@ public class FieldController : SimpleViewController
 
     void Start()
     {
+        fieldUIController = GameObject.FindObjectOfType<FieldUIController>() as FieldUIController;
+
         TileController.LoadTiles();
 
         for (int x = (int)-FieldSize.x; x < (int)FieldSize.x + 1; x++)
@@ -97,7 +98,6 @@ public class FieldController : SimpleViewController
 
     public void DeactivateMarker()
     {
-        // TODO Change this into a UnityEvent
         markerActive = false;
     }
 
@@ -112,15 +112,37 @@ public class FieldController : SimpleViewController
 
     private void SpawnMole()
     {
-        GameObject mole = GameObject.Instantiate(MolePrefab);
-        mole.transform.SetParent(gameObject.transform, false);
+        int tries = 3;
+        bool valid = false;
+        Vector2 position = new Vector2();
 
-        Vector2 position;
-        position.x = Random.Range(0, 2 * FieldSize.x * FieldConstants.TileWidth);
-        position.y = Random.Range(0, 2 * FieldSize.y * FieldConstants.TileHeight);
-        mole.transform.position = new Vector3(position.x, position.y, 0);
-        mole.transform.localScale = Vector3.one;
-        float rotation = Random.Range(-180f, 180f);
-        mole.transform.rotation = Quaternion.AngleAxis(rotation, new Vector3(0, 0, 1));
+        while (tries > 0 && !valid)
+        {
+            position.x = Random.Range(0, 2 * FieldSize.x * FieldConstants.TileWidth);
+            position.y = Random.Range(0, 2 * FieldSize.y * FieldConstants.TileHeight);
+
+            // Ensure two radmoles don't spawn at the same place
+            RaycastHit2D hit = Physics2D.Raycast(position - 32f * Vector2.right, Vector2.left);
+            if (hit && hit.collider.tag == "Proximity")
+            {
+                tries--;
+            }
+            else
+            {
+                valid = true;
+            }
+        }
+
+        if (valid)
+        {
+            GameObject mole = GameObject.Instantiate(MolePrefab);
+            mole.transform.SetParent(MoleRoot.transform, false);
+            mole.name = "Radmole" + Random.Range(10000, 99999);
+
+            mole.transform.position = new Vector3(position.x, position.y, 0);
+            mole.transform.localScale = Vector3.one;
+            float rotation = Random.Range(-180f, 180f);
+            mole.transform.rotation = Quaternion.AngleAxis(rotation, new Vector3(0, 0, 1));
+        }
     }
 }

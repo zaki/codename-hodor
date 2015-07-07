@@ -6,7 +6,7 @@ using System.Collections;
 public class MarkerController : SimpleViewController
 {
     public float ExplosionDelay = 1.2f;
-    public BoxCollider2D Collider;
+    public CircleCollider2D Collider;
 
     private FieldController fieldController = null;
 
@@ -24,8 +24,6 @@ public class MarkerController : SimpleViewController
         // Allow the collider to trigger moleicide
         yield return new WaitForSeconds(0.1f);
 
-        // TODO Check hits
-        // TODO Send score events
         fieldController.DeactivateMarker();
         Collider.enabled = false;
 

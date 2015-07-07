@@ -10,8 +10,8 @@ GameObject:
   - 224: {fileID: 22415390}
   - 222: {fileID: 22203158}
   - 114: {fileID: 11471114}
-  - 61: {fileID: 6111040}
   - 50: {fileID: 5010972}
+  - 58: {fileID: 5844794}
   m_Layer: 0
   m_Name: Spr_Target
   m_TagString: TargetMarker
@@ -53,8 +53,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!61 &6111040
-BoxCollider2D:
+--- !u!58 &5844794
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -65,7 +65,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 64, y: 64}
+  m_Radius: 32
 --- !u!111 &11190256
 Animation:
   m_ObjectHideFlags: 1
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExplosionDelay: 1.20000005
-  Collider: {fileID: 6111040}
+  Collider: {fileID: 5844794}
 --- !u!114 &11471114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,7 +219,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: Collider
       value: 
-      objectReference: {fileID: 6111040}
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
       value: 1
