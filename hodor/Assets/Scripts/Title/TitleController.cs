@@ -34,7 +34,6 @@ public class TitleController : SimpleViewController
                 if (lmnts.Length != 2) continue;
 
                 StoryTextEntry entry;
-                Debug.Log(" " + lmnts[0] + " , " + lmnts[1]);
                 entry.Duration = float.Parse(lmnts[0]);
                 entry.Text = lmnts[1];
 
