@@ -13,6 +13,10 @@ public class RadmoleController : SimpleViewController
     private bool moving = false;
     private float speed = 50.0f;
     private int ignoreRaycastLayer;
+    private float turn = 0.0f;
+
+    private int screenHeight;
+    private int screenWidth;
 
     void Awake()
     {
@@ -46,11 +50,10 @@ public class RadmoleController : SimpleViewController
     {
         if (moving)
         {
-            // TODO Improve avoidance detection
             int layer = gameObject.layer;
 
             Vector2 forward = new Vector2(gameObject.transform.forward.x, gameObject.transform.forward.y);
-            Vector3 start = gameObject.transform.position + gameObject.transform.forward * 35f;
+            Vector3 start = gameObject.transform.position + 35f * gameObject.transform.forward;
 
             // Disable self-collision in raycast
             Proximity.enabled = false;
@@ -58,12 +61,16 @@ public class RadmoleController : SimpleViewController
             gameObject.layer = ignoreRaycastLayer;
 
             // Look ahead, turn if necessary
-            RaycastHit2D hit = Physics2D.Raycast(start, forward, 64.0f, ProximityLayerMask);
-            Debug.DrawRay(start, gameObject.transform.forward, Color.blue, 0.1f);
+            RaycastHit2D hit = Physics2D.Raycast(start, forward, 256f, ProximityLayerMask);
 
             if (hit)
             {
-                float turn = Random.Range(-15f, 15f);
+                Vector3 obstaclePosition = hit.collider.gameObject.transform.position;
+                Vector3 cross = Vector3.Cross(obstaclePosition, gameObject.transform.position).normalized;
+
+                // Check the relation of our heading to their position and turn to avoid
+                turn = cross.z > 0.0f ? 10.0f : -10.0f;
+
                 gameObject.transform.Rotate(Vector3.forward, turn);
             }
 

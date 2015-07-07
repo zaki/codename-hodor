@@ -99,7 +99,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 64
+  m_Radius: 32
 --- !u!61 &6164602
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -167,7 +167,7 @@ MonoBehaviour:
   ProximityBody: {fileID: 5097688}
   ProximityLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
 --- !u!222 &22235874
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -310,7 +310,7 @@ Prefab:
       objectReference: {fileID: 5814668}
     - target: {fileID: 0}
       propertyPath: m_Radius
-      value: 64
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ProximityBody
@@ -334,7 +334,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ProximityLayerMask.m_Bits
-      value: 512
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: IgnoreCollisionLayerMask.m_Bits

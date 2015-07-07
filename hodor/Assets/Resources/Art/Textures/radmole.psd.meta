@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3105d29902f9f45b5980e8c4fd107810
-timeCreated: 1436113773
+timeCreated: 1436282788
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -17,6 +17,9 @@ TextureImporter:
     21300020: radmole_6
     21300022: radmole_11
     21300024: radmole_12
+    21300026: radmole_13
+    21300028: radmole_14
+    21300030: radmole_15
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -142,7 +145,47 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+    - name: radmole_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: radmole_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: radmole_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: radmole_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: radmole_12
       rect:
         serializedVersion: 2
         x: 0
@@ -152,7 +195,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: radmole_10
+    - name: radmole_13
       rect:
         serializedVersion: 2
         x: 32
@@ -162,7 +205,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: radmole_11
+    - name: radmole_14
       rect:
         serializedVersion: 2
         x: 64
@@ -172,7 +215,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: radmole_12
+    - name: radmole_15
       rect:
         serializedVersion: 2
         x: 96
