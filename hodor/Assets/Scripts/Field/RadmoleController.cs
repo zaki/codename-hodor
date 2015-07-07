@@ -22,6 +22,9 @@ public class RadmoleController : SimpleViewController
     {
         MoleAnimator = gameObject.GetComponent<Animator>();
         ignoreRaycastLayer = LayerMask.NameToLayer("Ignore Raycast");
+
+        moveDuration = Random.Range(3.0f, 8.0f);
+        speed = Random.Range(40.0f, 60.0f);
     }
 
     void OnEnable()

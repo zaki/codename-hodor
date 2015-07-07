@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 88df1d4088706442c806bd6109625444
-timeCreated: 1435854150
+timeCreated: 1436287553
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -13,6 +13,14 @@ TextureImporter:
     21300012: tiles_5
     21300014: tiles_6
     21300016: tiles_7
+    21300018: tiles_8
+    21300020: tiles_9
+    21300022: tiles_10
+    21300024: tiles_11
+    21300026: tiles_12
+    21300028: tiles_13
+    21300030: tiles_14
+    21300032: tiles_15
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -66,7 +74,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles_1
       rect:
@@ -76,7 +84,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles_2
       rect:
@@ -86,7 +94,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles_3
       rect:
@@ -96,7 +104,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles_4
       rect:
@@ -106,7 +114,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles_5
       rect:
@@ -116,7 +124,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles_6
       rect:
@@ -126,7 +134,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: tiles_7
       rect:
@@ -136,7 +144,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
