@@ -45,7 +45,7 @@ public class RadmoleController : SimpleViewController
         {
             // Wandered off-screen
             StopAllCoroutines();
-            GameObject.Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -110,7 +110,7 @@ public class RadmoleController : SimpleViewController
             yield return null;
         }
 
-        GameObject.Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     void OnTriggerStay2D(Collider2D collider)
@@ -141,6 +141,6 @@ public class RadmoleController : SimpleViewController
         // Let the remains lie around for a while... for... artistic purposes of course
         yield return new WaitForSeconds(1.5f);
 
-        GameObject.Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

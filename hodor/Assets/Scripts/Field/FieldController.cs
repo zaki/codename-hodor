@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 
 [RequireComponent(typeof(CanvasScaler))]
+[RequireComponent(typeof(ObjectPool))]
 public class FieldController : SimpleViewController
 {
     internal static class FieldConstants
@@ -37,6 +38,7 @@ public class FieldController : SimpleViewController
     private Vector2 FieldSize;
     private bool markerActive = false;
     private FieldUIController fieldUIController;
+    private ObjectPool radmolePool;
 
     private int score = 0;
 
@@ -44,6 +46,8 @@ public class FieldController : SimpleViewController
     {
         Vector2 referenceResolution = gameObject.GetComponent<CanvasScaler>().referenceResolution;
         FieldSize = FieldConstants.FieldSize(referenceResolution);
+
+        radmolePool = gameObject.GetComponent<ObjectPool>();
     }
 
     void OnEnable()
@@ -135,7 +139,10 @@ public class FieldController : SimpleViewController
 
         if (valid)
         {
-            GameObject mole = GameObject.Instantiate(MolePrefab);
+            GameObject mole = radmolePool.Create();
+            if (mole == null) return;
+
+            mole.SetActive(true);
             mole.transform.SetParent(MoleRoot.transform, false);
             mole.name = "Radmole" + Random.Range(10000, 99999);
 
