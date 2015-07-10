@@ -14,10 +14,10 @@ public class FieldController : SimpleViewController
         public static int TileHeight = 32;
         public static int FieldMargin = 1;
 
-        public static Vector2 FieldSize(Vector2 referenceResolution)
+        public static Vector2 FieldSize(Vector2 resolution)
         {
-            int fieldWidth  = Mathf.FloorToInt(referenceResolution.x / TileWidth  / 2) + FieldMargin;
-            int fieldHeight = Mathf.FloorToInt(referenceResolution.y / TileHeight / 2) + FieldMargin;
+            int fieldWidth  = Mathf.FloorToInt(resolution.x / TileWidth  / 2) + FieldMargin;
+            int fieldHeight = Mathf.FloorToInt(resolution.y / TileHeight / 2) + FieldMargin;
 
             return new Vector2(fieldWidth, fieldHeight);
         }
@@ -44,8 +44,8 @@ public class FieldController : SimpleViewController
 
     void Awake()
     {
-        Vector2 referenceResolution = gameObject.GetComponent<CanvasScaler>().referenceResolution;
-        FieldSize = FieldConstants.FieldSize(referenceResolution);
+        Vector2 resolution = new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight);
+        FieldSize = FieldConstants.FieldSize(resolution);
 
         radmolePool = gameObject.GetComponent<ObjectPool>();
     }

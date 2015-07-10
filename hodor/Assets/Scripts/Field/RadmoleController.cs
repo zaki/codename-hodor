@@ -39,9 +39,8 @@ public class RadmoleController : SimpleViewController
             gameObject.transform.Translate(Vector3.up * Time.deltaTime * speed);
         }
 
-        // TODO No magic numbers
-        if (gameObject.transform.position.x < -32 || gameObject.transform.position.x > 800 ||
-            gameObject.transform.position.y < -32 || gameObject.transform.position.y > 600)
+        if (gameObject.transform.position.x < -32 || gameObject.transform.position.x > Camera.main.pixelWidth ||
+            gameObject.transform.position.y < -32 || gameObject.transform.position.y > Camera.main.pixelHeight)
         {
             // Wandered off-screen
             StopAllCoroutines();
