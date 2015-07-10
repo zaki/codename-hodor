@@ -40,20 +40,21 @@ public class FieldController : SimpleViewController
     private FieldUIController fieldUIController;
     private ObjectPool radmolePool;
 
-    private int score = 0;
+    private ScoreModel score;
 
     void Awake()
     {
         Vector2 resolution = new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight);
         FieldSize = FieldConstants.FieldSize(resolution);
 
+        score = new ScoreModel();
         radmolePool = gameObject.GetComponent<ObjectPool>();
     }
 
     void OnEnable()
     {
-        FieldController.DestroyedMole.AddListener(() => { score++; fieldUIController.Score = score; });
-        FieldController.GameOver.AddListener(() => { fieldUIController.GameOver(score); });
+        FieldController.DestroyedMole.AddListener(() => fieldUIController.Score = ++score.Score );
+        FieldController.GameOver.AddListener(OnGameOver);
     }
 
     void OnDisable()
@@ -151,5 +152,11 @@ public class FieldController : SimpleViewController
             float rotation = Random.Range(-180f, 180f);
             mole.transform.rotation = Quaternion.AngleAxis(rotation, new Vector3(0, 0, 1));
         }
+    }
+
+    void OnGameOver()
+    {
+        score.Save();
+        fieldUIController.GameOver(score.Score);
     }
 }
