@@ -109,6 +109,7 @@ public class RadmoleController : SimpleViewController
             yield return null;
         }
 
+        moving = false;
         gameObject.SetActive(false);
     }
 
@@ -140,6 +141,7 @@ public class RadmoleController : SimpleViewController
         // Let the remains lie around for a while... for... artistic purposes of course
         yield return new WaitForSeconds(1.5f);
 
+        moving = false;
         gameObject.SetActive(false);
     }
 }
