@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-public class ObjectPool : MonoBehaviour 
+public class ObjectPool : MonoBehaviour
 {
     public GameObject PoolObjectPrefab;
     public int Capacity;

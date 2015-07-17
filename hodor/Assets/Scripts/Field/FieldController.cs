@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.Collections;
+using UniRx;
 
 [RequireComponent(typeof(CanvasScaler))]
 [RequireComponent(typeof(ObjectPool))]
@@ -42,30 +43,17 @@ public class FieldController : SimpleViewController
 
     private ScoreModel score;
 
-    void Awake()
+    void Start()
     {
         Vector2 resolution = new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight);
         FieldSize = FieldConstants.FieldSize(resolution);
 
         score = new ScoreModel();
         radmolePool = gameObject.GetComponent<ObjectPool>();
-    }
-
-    void OnEnable()
-    {
-        FieldController.DestroyedMole.AddListener(() => fieldUIController.Score = ++score.Score );
-        FieldController.GameOver.AddListener(OnGameOver);
-    }
-
-    void OnDisable()
-    {
-        FieldController.DestroyedMole.RemoveAllListeners();
-        FieldController.GameOver.RemoveAllListeners();
-    }
-
-    void Start()
-    {
         fieldUIController = GameObject.FindObjectOfType<FieldUIController>() as FieldUIController;
+
+        FieldController.DestroyedMole.AsObservable().Subscribe(_=> fieldUIController.Score.Value = ++score.Score);
+        FieldController.GameOver.AsObservable().Subscribe(OnGameOver);
 
         TileController.LoadTiles();
 
@@ -154,7 +142,7 @@ public class FieldController : SimpleViewController
         }
     }
 
-    void OnGameOver()
+    void OnGameOver(Unit unit)
     {
         score.Save();
         fieldUIController.GameOver(score.Score);

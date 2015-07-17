@@ -1,23 +1,18 @@
 using UnityEngine;
 using System.Collections;
+using UniRx;
 
 public class MenuViewController : ViewController<MenuViewPresenter>
 {
-    private ScoreModel score;
+    private ScoreModel scoreModel;
 
-    void OnEnable()
+    void Start()
     {
-        ViewPresenter.StartGameButton.onClick.AddListener(OnStartGame);
-        ViewPresenter.ExitGameButton.onClick.AddListener(() => Application.Quit());
+        ViewPresenter.StartGameButton.OnClickAsObservable().Subscribe(_ => OnStartGame()).AddTo(this);
+        ViewPresenter.ExitGameButton.OnClickAsObservable().Subscribe(_ => Application.Quit()).AddTo(this);
 
-        score = new ScoreModel();
-        ViewPresenter.HiscoreText.text = string.Format("hiscore: {0}", score.Score);
-    }
-
-    void OnDisable()
-    {
-        ViewPresenter.StartGameButton.onClick.RemoveAllListeners();
-        ViewPresenter.ExitGameButton.onClick.RemoveAllListeners();
+        scoreModel = new ScoreModel();
+        ViewPresenter.UpdateHiscore(scoreModel.Hiscore);
     }
 
     void OnStartGame()

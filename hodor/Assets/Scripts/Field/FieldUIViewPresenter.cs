@@ -8,4 +8,19 @@ public class FieldUIViewPresenter : ViewPresenter
 
     public GameObject GameOverRibbon;
     public Text GameOverScoreLabel;
+
+    public void UpdateRemainingTime(float remainingTime)
+    {
+        RemainingTimeLabel.text = string.Format("{0:0.00}", remainingTime);
+
+        if (remainingTime <= 5.0f)
+        {
+            RemainingTimeLabel.color = Color.red;
+        }
+
+        if (remainingTime <= 0.0f)
+        {
+            RemainingTimeLabel.text = "Time up";
+        }
+    }
 }

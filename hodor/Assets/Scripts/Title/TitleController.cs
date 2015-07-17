@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 
 public class TitleController : SimpleViewController
 {
@@ -44,13 +45,12 @@ public class TitleController : SimpleViewController
         }
     }
 
-    void OnEnable()
+    void Start()
     {
-        SkipButton.onClick.AddListener(() => Application.LoadLevel("Menu"));
+        SkipButton.OnClickAsObservable().Subscribe(_ => Application.LoadLevel("Menu")).AddTo(this);
 
         story = StoryTextEntry.ParseText(StoryText);
-
-        StartCoroutine(ShowIntro());
+        Observable.FromCoroutine(ShowIntro).Subscribe().AddTo(this);
     }
 
     IEnumerator ShowIntro()

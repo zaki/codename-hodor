@@ -3,38 +3,35 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.Collections;
+using UniRx;
 
 public class FieldUIController : ViewController<FieldUIViewPresenter>
 {
-    private float timeRemaining = 60.0f;
+    private float remainingTime = 60.0f;
     private bool gameRunning = true;
 
-    public int Score
-    {
-        set { ViewPresenter.ScoreLabel.text = string.Format("{0} rms", value); }
-    }
+    public ReactiveProperty<int> Score;
+    public ReactiveProperty<float> RemainingTime;
 
-    public void StartTimer(float remainingTime)
+    void Start()
     {
-        timeRemaining = remainingTime;
+        Score = new ReactiveProperty<int>(0);
+        Score.Subscribe(UpdateScore).AddTo(this);
+
+        RemainingTime = new ReactiveProperty<float>(60.0f);
+        RemainingTime.Subscribe(UpdateRemainingTime);
     }
 
     void Update()
     {
         if (!gameRunning) return;
 
-        timeRemaining -= Time.deltaTime;
+        remainingTime -= Time.deltaTime;
 
-        ViewPresenter.RemainingTimeLabel.text = string.Format("{0:0.00}", timeRemaining);
+        ViewPresenter.UpdateRemainingTime(remainingTime);
 
-        if (timeRemaining <= 5.0f)
+        if (remainingTime <= 0.0f)
         {
-            ViewPresenter.RemainingTimeLabel.color = Color.red;
-        }
-
-        if (timeRemaining <= 0.0f)
-        {
-            ViewPresenter.RemainingTimeLabel.text = "Time up";
             FieldController.GameOver.Invoke();
             gameRunning = false;
         }
@@ -53,5 +50,15 @@ public class FieldUIController : ViewController<FieldUIViewPresenter>
         yield return new WaitForSeconds(5.0f);
 
         Application.LoadLevel("Menu");
+    }
+
+    void UpdateScore(int score)
+    {
+        ViewPresenter.ScoreLabel.text = string.Format("{0} rms", score);
+    }
+
+    void UpdateRemainingTime(float remaining)
+    {
+        ViewPresenter.RemainingTimeLabel.text = string.Format("{0:0.00}", remaining);
     }
 }

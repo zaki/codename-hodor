@@ -4,6 +4,8 @@ public class ScoreModel
 {
     private readonly string ScoreKey = "HISCORE";
 
+    public int Hiscore { get; private set; }
+
     private int score;
     public int Score
     {
@@ -11,13 +13,12 @@ public class ScoreModel
         set
         {
             score = value;
-
         }
     }
 
     public ScoreModel()
     {
-        score = PlayerPrefs.GetInt(ScoreKey, 0);
+        Hiscore = PlayerPrefs.GetInt(ScoreKey, 0);
     }
 
     public void Save()
@@ -25,6 +26,7 @@ public class ScoreModel
         if (score > PlayerPrefs.GetInt(ScoreKey, 0))
         {
             PlayerPrefs.SetInt(ScoreKey, score);
+            Hiscore = score;
         }
     }
 }

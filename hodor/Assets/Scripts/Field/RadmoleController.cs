@@ -27,11 +27,6 @@ public class RadmoleController : SimpleViewController
         speed = Random.Range(40.0f, 60.0f);
     }
 
-    void OnEnable()
-    {
-        StartCoroutine(MoveToBurrow());
-    }
-
     void Update()
     {
         if (moving)
@@ -85,14 +80,6 @@ public class RadmoleController : SimpleViewController
 
     IEnumerator MoveToBurrow()
     {
-        string baseLayer = MoleAnimator.GetLayerName(0);
-        string moveAnim = string.Format("{0}.Move", baseLayer);
-
-        while (MoleAnimator.IsInTransition(0) || !MoleAnimator.GetCurrentAnimatorStateInfo(0).IsName(moveAnim))
-        {
-            yield return null;
-        }
-
         moving = true;
         Collider.enabled = true;
 
@@ -100,15 +87,10 @@ public class RadmoleController : SimpleViewController
 
         MoleAnimator.SetTrigger("DoBurrow");
         Collider.enabled = false;
+    }
 
-        yield return new WaitForEndOfFrame();
-
-        // Wait for burrow to finish
-        while (MoleAnimator.IsInTransition(0) || MoleAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-        {
-            yield return null;
-        }
-
+    void Burrowed()
+    {
         moving = false;
         gameObject.SetActive(false);
     }
@@ -122,26 +104,16 @@ public class RadmoleController : SimpleViewController
             Collider.enabled = false;
             moving = false;
 
-            StartCoroutine(DoDie());
+            MoleAnimator.SetTrigger("DoDie");
+            FieldController.DestroyedMole.Invoke();
         }
     }
 
-    IEnumerator DoDie()
+    IEnumerator Died()
     {
-        MoleAnimator.SetTrigger("DoDie");
-        FieldController.DestroyedMole.Invoke();
-
-        yield return new WaitForEndOfFrame();
-
-        while (MoleAnimator.IsInTransition(0) || MoleAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-        {
-            yield return null;
-        }
-
-        // Let the remains lie around for a while... for... artistic purposes of course
+        moving = false;
         yield return new WaitForSeconds(1.5f);
 
-        moving = false;
         gameObject.SetActive(false);
     }
 }

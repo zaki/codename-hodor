@@ -7,4 +7,9 @@ public class MenuViewPresenter : ViewPresenter
     public Button ExitGameButton;
 
     public Text HiscoreText;
+
+    public void UpdateHiscore(int hiscore)
+    {
+        HiscoreText.text = string.Format("hiscore: {0}", hiscore);
+    }
 }
