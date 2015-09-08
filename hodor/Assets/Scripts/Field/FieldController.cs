@@ -84,7 +84,7 @@ public class FieldController : SimpleViewController
         marker.GetComponent<MarkerController>().SetController(this);
 
         Vector2 position = (pointer as PointerEventData).position;
-        marker.transform.position = new Vector3(position.x, position.y, 0);
+        marker.transform.position = Converter.ToWorld(position);
         marker.transform.localScale = Vector3.one;
         markerActive = true;
     }
@@ -107,15 +107,18 @@ public class FieldController : SimpleViewController
     {
         int tries = 3;
         bool valid = false;
-        Vector2 position = new Vector2();
+        Vector3 position = new Vector3();
+        Vector2 screenPosition = new Vector2();
 
         while (tries > 0 && !valid)
         {
-            position.x = Random.Range(0, 2 * FieldSize.x * FieldConstants.TileWidth);
-            position.y = Random.Range(0, 2 * FieldSize.y * FieldConstants.TileHeight);
+            screenPosition.x = Random.Range(0, 2 * FieldSize.x * FieldConstants.TileWidth);
+            screenPosition.y = Random.Range(0, 2 * FieldSize.y * FieldConstants.TileHeight);
+
+            position = Converter.ToWorld(screenPosition);
 
             // Ensure two radmoles don't spawn at the same place
-            RaycastHit2D hit = Physics2D.Raycast(position - 32f * Vector2.right, Vector2.left);
+            RaycastHit2D hit = Physics2D.Raycast(screenPosition - 32f * Vector2.right, Vector2.left * 32f);
             if (hit && hit.collider.tag == "Proximity")
             {
                 tries--;
@@ -135,7 +138,7 @@ public class FieldController : SimpleViewController
             mole.transform.SetParent(MoleRoot.transform, false);
             mole.name = "Radmole" + Random.Range(10000, 99999);
 
-            mole.transform.position = new Vector3(position.x, position.y, 0);
+            mole.transform.position =  position;
             mole.transform.localScale = Vector3.one;
             float rotation = Random.Range(-180f, 180f);
             mole.transform.rotation = Quaternion.AngleAxis(rotation, new Vector3(0, 0, 1));

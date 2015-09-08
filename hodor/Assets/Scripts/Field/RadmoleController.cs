@@ -11,7 +11,7 @@ public class RadmoleController : SimpleViewController
     private Animator MoleAnimator;
     private float moveDuration = 5.0f;
     private bool moving = false;
-    private float speed = 50.0f;
+    private float speed = 0.05f;
     private int ignoreRaycastLayer;
     private float turn = 0.0f;
 
@@ -27,7 +27,7 @@ public class RadmoleController : SimpleViewController
     void OnEnable()
     {
         moveDuration = Random.Range(3.0f, 8.0f);
-        speed = Random.Range(40.0f, 60.0f);
+        speed = Random.Range(0.5f, 1.0f);
         moving = false;
     }
 
