@@ -35,7 +35,7 @@ Shader "Hodor/Heatwave"
 
             fixed4 frag(v2f_img IN) : COLOR
             {
-                fixed4 c = tex2D(_MainTex, IN.uv + float2(0, sin(IN.uv.x * 16 + _Time * 15.0) * 0.005));
+                fixed4 c = tex2D(_MainTex, IN.uv + float2(0, sin(IN.uv.x * 16 + _Time * 40.0) * 0.003));
 
                 return c;
             }
