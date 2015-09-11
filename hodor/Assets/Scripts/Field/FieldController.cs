@@ -38,6 +38,7 @@ public class FieldController : SimpleViewController
 
     private Vector2 FieldSize;
     private bool markerActive = false;
+    private bool gameOver = false;
     private FieldUIController fieldUIController;
     private ObjectPool radmolePool;
 
@@ -52,7 +53,11 @@ public class FieldController : SimpleViewController
         radmolePool = gameObject.GetComponent<ObjectPool>();
         fieldUIController = GameObject.FindObjectOfType<FieldUIController>() as FieldUIController;
 
-        FieldController.DestroyedMole.AsObservable().Subscribe(_=> fieldUIController.Score.Value = ++score.Score);
+        FieldController.DestroyedMole.AsObservable().Subscribe(_ =>
+                {
+                    if (gameOver) return;
+                    fieldUIController.Score.Value = ++score.Score;
+                });
         FieldController.GameOver.AsObservable().Subscribe(OnGameOver);
 
         TileController.LoadTiles();
@@ -77,7 +82,7 @@ public class FieldController : SimpleViewController
 
     public void OnClick(BaseEventData pointer)
     {
-        if (markerActive) return;
+        if (markerActive || gameOver) return;
 
         GameObject marker = GameObject.Instantiate(MarkerPrefab);
         marker.transform.SetParent(gameObject.transform, false);
@@ -147,6 +152,7 @@ public class FieldController : SimpleViewController
 
     void OnGameOver(Unit unit)
     {
+        gameOver = true;
         score.Save();
         fieldUIController.GameOver(score.Score);
     }
