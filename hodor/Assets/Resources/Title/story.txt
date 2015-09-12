@@ -32,7 +32,7 @@
 0.500	Maxine: ...
 3.000	Sensor: I modified the onboard laser and made it more powerful
 3.000	Sensor: We need you to eradicate these mole creatures
-3.000	Sensor: Your spacecraft is in orbit. You will have
+2.000	Sensor: Your spacecraft is in orbit. You will have
 3.000	Sensor: About 60 seconds over the target area.
 3.000	Sensor: Use it wisely.
 0.500	Maxine: what?!
